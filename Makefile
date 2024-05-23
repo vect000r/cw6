@@ -1,8 +1,8 @@
 FC = gcc
 LINKER = -Wall -std=c99 -pedantic
 
-NAME1 = powielacz
-NAME2 = wykluczanie
+NAME1 = semaphore_maker
+NAME2 = supply_manager
 
 EXEC1 = $(NAME1).x
 OBJS1 = $(NAME1).o

@@ -1,10 +1,8 @@
 #include "semaphores.h"
-#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <wait.h>
-#include <assert.h>
 #include <signal.h>
 #include <string.h>
 
@@ -19,14 +17,12 @@ void at_end_removal()
 void signal_handler(int sig)
 {
     printf("Received signal %d\n", sig);
-    unlinkSem(SEM_NAME);
-    
     if (remove(FILE_NAME) == -1)
     {
         perror("Failed to remove file");
         exit(1);
     }    
-    
+    // usunięcie semafora w tej funkcji odbywa sie za pomocą exit, ponieważ już w funkcji atexit jest wywołane usunięcie semafora
     exit(0);
 }
 
